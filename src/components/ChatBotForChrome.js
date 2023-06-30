@@ -13,14 +13,38 @@ const ChatBotForChrome = () => {
       ]);
       event.target.reset();
 
-      // Delay before receiving bot's response
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // Make POST request to the API
+      try {
+        const response = await fetch(
+          "https://crudcrud.com/api/82c14089e86f4893a594038ab4f780bd/messages",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ message: userMessage }),
+          }
+        );
 
-      // Add bot's response
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { sender: "bot", text: `ChatGPT: ${userMessage}` },
-      ]);
+        if (response.ok) {
+          const responseData = await response.json();
+          const botMessage = responseData.message;
+
+          // Delay before receiving bot's response
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+
+          // Add bot's response
+          setMessages((prevMessages) => [
+            ...prevMessages,
+            { sender: "bot", text: `ChatGPT: ${botMessage}` },
+          ]);
+          // Error handling
+        } else {
+          throw new Error("Request failed with status " + response.status);
+        }
+      } catch (error) {
+        alert("Error:", error.message);
+      }
     }
   };
 
