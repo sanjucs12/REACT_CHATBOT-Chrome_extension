@@ -1,9 +1,10 @@
-import "./App.css";
+import React from "react";
+import ChatBot from "./components/ChatBot";
 
 function App() {
   return (
-    <div className="App">
-      <h2>Hello world</h2>
+    <div className="flex justify-center items-center h-screen bg-gray-200">
+      <ChatBot />
     </div>
   );
 }
