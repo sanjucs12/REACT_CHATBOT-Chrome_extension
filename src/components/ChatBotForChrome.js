@@ -16,7 +16,7 @@ const ChatBotForChrome = () => {
       // Make POST request to the API
       try {
         const response = await fetch(
-          "https://crudcrud.com/api/82c14089e86f4893a594038ab4f780bd/messages",
+          "https://jsonplaceholder.typicode.com/posts",
           {
             method: "POST",
             headers: {
@@ -43,7 +43,7 @@ const ChatBotForChrome = () => {
           throw new Error("Request failed with status " + response.status);
         }
       } catch (error) {
-        alert("Error:", error.message);
+        alert("Error: SOMETHING WENT WRONG", error.message);
       }
     }
   };
