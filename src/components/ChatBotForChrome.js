@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const ChatBot = () => {
+const ChatBotForChrome = () => {
   const [messages, setMessages] = useState([]);
 
   const handleMessageSubmit = async (event) => {
@@ -25,13 +25,13 @@ const ChatBot = () => {
   };
 
   return (
-    <div className="fixed bottom-20 right-0 w-96 p-4 m-4  bg-gray-800 border-t border-gray-300 rounded-lg">
+    <div className="w-96 p-4 m-4  bg-gray-800 border-t border-gray-300 rounded-lg">
       <div className="flex items-center mb-2 ">
         <div className="w-6 h-6 rounded-full bg-green-300" />
         <p className="ml-2 font-medium text-white">ChatGPT Online</p>
       </div>
       {/* MESSAGE CONTAINER */}
-      <div className="flex flex-col space-y-2 max-h-[420px] overflow-y-auto">
+      <div className="flex flex-col space-y-2 max-h-[400px] overflow-y-auto">
         {messages.map((message, index) => (
           <div
             key={`message-${index}`}
@@ -69,4 +69,4 @@ const ChatBot = () => {
   );
 };
 
-export default ChatBot;
+export default ChatBotForChrome;
