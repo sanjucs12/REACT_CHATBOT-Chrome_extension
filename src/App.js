@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import ChatBotForChrome from "./components/ChatBotForChrome";
+import { ChatBotProvider } from "./components/ChatBotContext";
 
 function App() {
   const [isActive, setIsActive] = useState(false);
@@ -30,11 +31,12 @@ function App() {
         <div className="mt-4">
           <p className="text-lg font-bold">ChatGPT</p>
         </div>
-
-        {isActive && <ChatBotForChrome />}
-        {/* <div className="mt-4">
-          {isActive && <ChatBotForChrome />}
-        </div> */}
+        {/* <ChatBotProvider> {isActive && <ChatBotForChrome />}</ChatBotProvider> */}
+        {isActive && (
+          <ChatBotProvider>
+            <ChatBotForChrome />
+          </ChatBotProvider>
+        )}
       </div>
     </div>
   );

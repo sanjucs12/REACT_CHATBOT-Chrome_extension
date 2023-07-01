@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { ChatBotContext } from "./ChatBotContext";
 
 const ChatBotForChrome = () => {
-  const [messages, setMessages] = useState([]);
+  const { messages, addMessage, clearMessages } = useContext(ChatBotContext);
+  const [inputMessage, setInputMessage] = useState("");
 
   const handleMessageSubmit = async (event) => {
     event.preventDefault();
-    const userMessage = event.target.elements.message.value;
-    if (userMessage.trim() !== "") {
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { sender: "user", text: userMessage },
-      ]);
-      event.target.reset();
+
+    const userMessage = inputMessage.trim();
+    if (userMessage !== "") {
+      addMessage({ sender: "user", text: userMessage });
+      setInputMessage("");
 
       // Make POST request to the API
       try {
@@ -34,10 +34,7 @@ const ChatBotForChrome = () => {
           await new Promise((resolve) => setTimeout(resolve, 1000));
 
           // Add bot's response
-          setMessages((prevMessages) => [
-            ...prevMessages,
-            { sender: "bot", text: `ChatGPT: ${botMessage}` },
-          ]);
+          addMessage({ sender: "bot", text: `ChatGPT: ${botMessage}` });
           // Error handling
         } else {
           throw new Error("Request failed with status " + response.status);
@@ -48,6 +45,24 @@ const ChatBotForChrome = () => {
     }
   };
 
+  const handleInputChange = (event) => {
+    setInputMessage(event.target.value);
+  };
+
+  // Load messages from localStorage when the component mounts
+  useEffect(() => {
+    const storedMessages = localStorage.getItem("chatbotMessages");
+    if (storedMessages) {
+      const parsedMessages = JSON.parse(storedMessages);
+      parsedMessages.forEach((message) => addMessage(message));
+    }
+  }, []);
+
+  // Save messages to localStorage when the messages state changes
+  useEffect(() => {
+    localStorage.setItem("chatbotMessages", JSON.stringify(messages));
+  }, [messages]);
+
   return (
     <div className="w-96 p-4 m-4  bg-gray-800 border-t rounded-lg border-solid border-4 border-blue-600">
       <div className="flex items-center mb-2 border-dotted border-4 border-blue-600 p-2 rounded-full">
@@ -56,6 +71,7 @@ const ChatBotForChrome = () => {
       </div>
       {/* MESSAGE CONTAINER */}
       <div className="flex flex-col space-y-2 h-[380px] overflow-y-auto">
+        {/* {console.log(messages)} */}
         {messages.map((message, index) => (
           <div
             key={`message-${index}`}
@@ -77,6 +93,8 @@ const ChatBotForChrome = () => {
             <input
               type="text"
               name="message"
+              value={inputMessage}
+              onChange={handleInputChange} // Add this line
               className="flex-grow border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
               placeholder="Type your message..."
             />
