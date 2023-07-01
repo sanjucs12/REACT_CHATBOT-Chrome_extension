@@ -8,6 +8,7 @@ Project Title: ECHO-CHAT-BOT a Chrome Extension
 - ECHO CHATBOT is a simple chat bot which replicates our messages back.
 - The user can enter his messages in the chat-box and can send by clicking the send button.
 - When he clicks on send button, POST request is made to the API end point, and after the delay of one second, same message will revert back as a reply.
+- Use context API for managing the states across the components
 - This application can also be used as a chrome extension which can be used in all the web pages.
 
 Technologies Used:

@@ -21,7 +21,7 @@ export const ChatBotProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    // console.log(messages); // Add this line to check the messages array
+    // console.log(messages);
   }, [messages]);
 
   return (

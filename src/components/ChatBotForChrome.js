@@ -94,7 +94,7 @@ const ChatBotForChrome = () => {
               type="text"
               name="message"
               value={inputMessage}
-              onChange={handleInputChange} // Add this line
+              onChange={handleInputChange}
               className="flex-grow border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
               placeholder="Type your message..."
             />
