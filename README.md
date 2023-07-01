@@ -12,11 +12,11 @@ Project Title: ECHO-CHAT-BOT a Chrome Extension
 
 Technologies Used:
 
-React: A JavaScript library for building user interfaces.
-React Tailwind CSS: A UI library that provides pre-designed components and styles.
-HTML/CSS: Used for structuring and styling the web pages.
-API: Used to POST the message as JSON object. {https://jsonplaceholder.typicode.com/posts}
-JavaScript: Used for client-side scripting and interactivity.
+- React: A JavaScript library for building user interfaces.
+- React Tailwind CSS: A UI library that provides pre-designed components and styles.
+- HTML/CSS: Used for structuring and styling the web pages.
+- API: Used to POST the message as JSON object. {https://jsonplaceholder.typicode.com/posts}
+- JavaScript: Used for client-side scripting and interactivity.
 
 
 Installation and Usage:
@@ -36,8 +36,8 @@ src/ChatBotForChrome.js: The component responsible for chat bot UI and functiona
 INSTALLATION OF CHROME EXTENSION
 
 - run npm build in the terminal
-- copy the build folder.
-- open google chrome--> goto --> chrome://extensions/ 
+- build folder is created in project directory.
+- open google chrome--> go-to --> chrome://extensions/ 
 - make sure the developer mode is ON and click on the Load unpacked.
 - choose the build folder ond click ok.
 - Now the extension will be installed in your chrome and you can select the extension in extension bar.
