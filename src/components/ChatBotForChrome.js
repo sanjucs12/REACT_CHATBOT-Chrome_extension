@@ -49,13 +49,13 @@ const ChatBotForChrome = () => {
   };
 
   return (
-    <div className="w-96 p-4 m-4  bg-gray-800 border-t border-gray-300 rounded-lg">
-      <div className="flex items-center mb-2 ">
+    <div className="w-96 p-4 m-4  bg-gray-800 border-t rounded-lg border-solid border-4 border-blue-600">
+      <div className="flex items-center mb-2 border-dotted border-4 border-blue-600 p-2 rounded-full">
         <div className="w-6 h-6 rounded-full bg-green-300" />
         <p className="ml-2 font-medium text-white">ChatGPT Online</p>
       </div>
       {/* MESSAGE CONTAINER */}
-      <div className="flex flex-col space-y-2 max-h-[400px] overflow-y-auto">
+      <div className="flex flex-col space-y-2 h-[380px] overflow-y-auto">
         {messages.map((message, index) => (
           <div
             key={`message-${index}`}

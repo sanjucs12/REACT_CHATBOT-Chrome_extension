@@ -10,7 +10,7 @@ function App() {
   };
 
   return (
-    <div className="flex justify-center h-screen bg-gray-200">
+    <div className="flex justify-center h-screen bg-blue-200">
       <div className="flex flex-col items-center">
         <button
           className={`relative inline-block mt-10 w-25 h-6 transition-colors duration-200 ease-in-out rounded-full ${
